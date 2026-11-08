@@ -3,7 +3,13 @@ import pandas as pd
 import numpy as np
 import pickle
 
-st.set_page_config(page_title="Student Performance Predictor", layout="wide")
+LOGO_URL = "https://i.postimg.cc/vmd5cHQP/Whats-App-Image-2026-11-08-at-9-51-29-PM.jpg"
+
+st.set_page_config(
+    page_title="Student Performance Predictor",
+    page_icon=LOGO_URL,
+    layout="wide"
+)
 
 @st.cache_resource
 def load_artifacts():
@@ -20,10 +26,11 @@ numerical_cols = artifacts['numerical_cols']
 categorical_cols = artifacts['categorical_cols']
 model = artifacts['model']
 
+st.sidebar.image(LOGO_URL, width=200)
+st.sidebar.header("Input Features")
+
 st.title("Student Academic Performance Predictor")
 st.write("Developer: Mohammed Anowar")
-
-st.sidebar.header("Input Features")
 
 hours_studied = st.sidebar.slider("Hours Studied", 0, 44, 20)
 attendance = st.sidebar.slider("Attendance Rate (%)", 60, 100, 85)
